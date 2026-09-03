@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- The <head> element contains meta information about the webpage. -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- This is the title of my personal portfolio website. It appears in the browser tab at the top of the screen. -->
+
+    <title>My Personal Portfolio</title>
+
+</head>
+
+<!-- Body indicates things like headings and paragraphs. -->
+
+<body>
+
+<!-- This first part contains my name and the title of my portfolio. -->
+
+<!-- the <header> element contains the main heading and subheading for the page (h1 and h2). -->
+
+<header>
+    <h1>Christian Braun</h1>
+    <h2>Cybersecurity Student and Information Technology Prospect</h2>
+</header>
+
+<!-- The <main> element is for the main content of the webpage. It contains sections about myself, my skills, projects, education and experience, contact information, and my learning journey. -->
+
+<main>
+
+    <!-- This next section contains information about myself. I use the <strong> HTML text element by name to emphasize my name in bold. I could use the <b> element instead, but the <strong> element is more semantically correct. -->
+
+    <section>
+
+        <h2>About Me</h2>
+
+        <p>
+            Hello, my name is <strong>Christian Braun</strong> and I am from Chicago, Illinois. I am currently
+            pursuing my degree in <em>Cybersecurity</em>.
+            I am interested in technology, computers, networking, and learning
+            how computer systems can be protected from security threats.
+        </p>
+
+        <!-- I then use the <em> element to emphasize and italicize the word "Cybersecurity". When the webpage is viewed normally, it will be displayed in italics. I could use the <i> element instead, but the <em> element is more semantically correct, just like the <strong> element. -->
+
+        <p>
+            My goal is to continue developing my technical skills and eventually
+            build a career in the field of <mark>Cybersecurity</mark>.
+
+            <!-- Here, I use the <mark> element to highlight the word "Cybersecurity" in yellow to show its importance and relevance to my portfolio. -->
+
+        </p>
+    </section>
+
+
+    <section>
+
+        <!-- In this section named "Skills", I use HTML lists to group my skills into categories instead of plain paragraphs. This satisfies the "Use HTML Lists to Group Your Skillset" requirement (Step 2). -->
+
+        <h2>Skills</h2>
+
+        <h3>Programming Languages</h3>
+        <ul>
+            <li>C</li>
+            <li>C++</li>
+            <li>HTML</li>
+        </ul>
+
+        <h3>Technical Skills</h3>
+        <ul>
+            <li>Troubleshooting</li>
+            <li>Networking</li>
+            <li>Problem-solving</li>
+            <li>Understanding computer systems</li>
+        </ul>
+
+        <h3>Currently Learning</h3>
+        <ol>
+            <li>Creating webpages</li>
+            <li>Cybersecurity concepts</li>
+        </ol>
+
+    </section>
+
+
+    <section>
+
+        <h2>Projects</h2>
+
+        <h3>Personal Portfolio Website</h3>
+
+        <!-- Here I use the <strong> element to emphasize and bold the words "HTML text formatting elements". -->
+
+        <p>
+            I've created this personal portfolio website using my knowledge of <strong>HTML text formatting elements</strong> and basic webpage development.
+        </p>
+
+        <figure>
+            <img src="portfolio_homepage.png" alt="Screenshot of the portfolio homepage" width="300">
+            <figcaption>Homepage layout of the portfolio site</figcaption>
+        </figure>
+        <figure>
+            <img src="skills_section.png" alt="Screenshot of the portfolio skills section" width="300">
+            <figcaption>Skills section using HTML lists</figcaption>
+        </figure>
+        <figure>
+            <img src="portfolio-screenshot3.png" alt="Screenshot of the portfolio in a mobile browser" width="300">
+            <figcaption>Responsive view on a mobile screen</figcaption>
+        </figure>
+
+        <h3>C / C++ Programming Exercises</h3>
+
+        <!-- Using the <mark> element to highlight the programming languages C and C++. -->
+
+        <p>
+            I have completed programming exercises using <mark>C</mark> and
+            <mark>C++</mark>. These projects helped me practice my programming skills and problem-solving abilities.
+        </p>
+
+        <!-- Images for the second project. -->
+
+        <figure>
+            <img src="c-project1.png" alt="Screenshot of C program output in the terminal" width="300">
+            <figcaption>Terminal output of a C program exercise</figcaption>
+        </figure>
+        <figure>
+            <img src="c-project2.png" alt="Screenshot of C++ source code in an editor" width="300">
+            <figcaption>C++ source code in VS Code</figcaption>
+        </figure>
+
+    </section>
+
+    <!-- In this Education and Experience section, I talk about what schools I've been to and my work experience. Step 1: this is now presented as an HTML table instead of paragraphs. -->
+
+    <section>
+
+        <h2>Education and Experience</h2>
+
+        <table border="1" cellpadding="8" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Institution / Company</th>
+                    <th>Degree / Position</th>
+                    <th>Duration</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Northern Arizona University, Flagstaff, AZ</td>
+                    <td>B.S. in Cybersecurity (in progress)</td>
+                    <td>2024 &ndash; Present</td>
+                </tr>
+                <tr>
+                    <td>Steinmetz College Prep, Chicago, IL</td>
+                    <td>High School Diploma</td>
+                    <td>2020 &ndash; 2024</td>
+                </tr>
+                <tr>
+                    <td>Customer Service / Technical Support</td>
+                    <td>Support Representative</td>
+                    <td>2022 &ndash; 2024</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- The reason I chose to use the <small> element here is to make the text smaller, it's not very important information, but it just serves as an additional note. -->
+
+        <p>
+            <small>
+                I am continuously working to improve my Cybersecurity skills.
+            </small>
+        </p>
+
+    </section>
+
+    <!-- This section contains my contact information. Step 4: contact details are now hyperlinks (mailto, tel, and GitHub/LinkedIn). -->
+
+    <section>
+
+        <h2>Contact Information</h2>
+
+        <ul>
+            <li><strong>Email:</strong> <a href="mailto:csb434@nau.edu">csb434@nau.edu</a></li>
+            <li><strong>Phone:</strong> <a href="tel:+15551234567">(555) 123-4567</a></li>
+            <li><strong>GitHub:</strong> <a href="https://github.com/csb434" target="_blank" rel="noopener">github.com/csb434</a></li>
+            <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/christian-braun" target="_blank" rel="noopener">linkedin.com/in/christian-braun</a></li>
+            <li><strong>Location:</strong> Flagstaff, Arizona</li>
+        </ul>
+
+    </section>
+
+    <section>
+
+        <h2>Resume</h2>
+
+        <p>
+            <a href="Christian-Braun-Resume.pdf" download>Download Christian Braun's Resume (PDF)</a>
+        </p>
+
+    </section>
+
+    <!-- This is the bonus section. I talk about my learning journey and use additional HTML text formatting elements.-->
+
+    <section>
+
+        <h2>My Learning Journey</h2>
+
+        <!-- For this particular paragraph, I use the <del> and <ins> elements to show the changes in my coding experience over time. The <del> element is used to indicate deleted text, and appears as a strikethrough on the webpage. The <ins> element is used to indicate inserted text, and appears as underlined on the webpage. -->
+
+        <p>
+            My experience with coding went from
+            <del>"I have no idea what I'm doing."</del>
+            to <ins>"I'm starting to understand and feel more confident."</ins>
+        </p>
+
+        <!-- Using <mark> element to highlight how I am practicing consistently day by day.-->
+
+        <p>
+            My goal is to continue improving my skills by
+            <mark>practicing consistently</mark>.
+        </p>
+
+        <!-- Using the <strong> element to emphasize and bold my career goals. -->
+
+        <p>
+            I am currently working toward becoming a better
+            <strong>webpage developer</strong> and technology professional.
+        </p>
+
+    </section>
+
+
+</main>
+
+<!-- The <footer> element is for the footer content at the bottom of the webpage. -->
+
+<footer>
+
+    <!-- I use the <small> element here as a sort of watermark at the end of the portfolio.-->
+
+    <p>
+        <small>
+            2026 Christian Braun. Personal Portfolio.
+        </small>
+    </p>
+
+</footer>
+
+</body>
+</html>
