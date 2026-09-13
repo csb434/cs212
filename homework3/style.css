@@ -1,0 +1,303 @@
+/* ==========================================================================
+   Global resets
+   I'm zeroing out default margin/padding and using border-box everywhere so
+   my Grid and Flexbox measurements don't get thrown off by browser defaults.
+   ========================================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #222;
+    background-color: #f4f4f4;
+}
+
+/* ==========================================================================
+   Page layout - CSS Grid
+   This is the main container from index.html. I'm using grid-template-areas
+   to lay out four named regions: header, sidebar, main, and footer. Naming
+   the areas like this makes it way easier to read than tracking row/column
+   numbers.
+   ========================================================================== */
+
+.page {
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+    grid-template-columns: 220px 1fr;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+}
+
+.header {
+    grid-area: header;
+    background-color: #1b2a4a;
+    color: #ffffff;
+    padding: 20px 30px;
+}
+
+.header h2 {
+    font-weight: normal;
+    font-size: 1rem;
+    margin-top: 5px;
+    color: #cbd5f0;
+}
+
+/* ==========================================================================
+   Sidebar - Flexbox
+   The sidebar itself is a flex container arranged as a column so the nav
+   list and the resume button stack vertically. justify-content pushes the
+   resume button toward the bottom, and align-items keeps everything
+   centered horizontally in the narrow sidebar.
+   ========================================================================== */
+
+.sidebar {
+    grid-area: sidebar;
+    background-color: #24344d;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: 20px 15px;
+    position: relative;
+}
+
+.nav-list {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    list-style: none;
+}
+
+.nav-list a {
+    color: #e8ecf7;
+    text-decoration: none;
+    font-size: 0.95rem;
+    padding: 8px 10px;
+    border-radius: 4px;
+    display: block;
+}
+
+.nav-list a:hover {
+    background-color: #3b527a;
+}
+
+/* Resume download button - Step 7
+   I used position: absolute here (relative to .sidebar, since the sidebar
+   has position: relative above) so the button stays anchored near the
+   bottom of the sidebar no matter how tall the nav list gets. */
+
+.resume-btn {
+    position: absolute;
+    bottom: 20px;
+    left: 15px;
+    right: 15px;
+    text-align: center;
+    background-color: #4c8bf5;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.resume-btn:hover {
+    background-color: #2f6ed6;
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   Main content column
+   This is where all my sections live. I made it scroll on its own
+   (overflow-y: auto) with a fixed height tied to the viewport, so the
+   header and sidebar stay put while I scroll through the content - similar
+   to how a lot of dashboard-style sites are laid out.
+   ========================================================================== */
+
+.main-content {
+    grid-area: main;
+    padding: 30px 40px;
+    overflow-y: auto;
+    max-height: 100vh;
+}
+
+.main-content section {
+    margin-bottom: 40px;
+}
+
+/* Step 3: Styling the Summary and Education sections with basic selectors -
+   font size, color, margin, and padding to make them easier to read. */
+
+.summary-section h2,
+.education-section h2 {
+    color: #1b2a4a;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #4c8bf5;
+}
+
+.summary-section p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 12px;
+    padding: 5px 0;
+}
+
+.education-section table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.education-section th,
+.education-section td {
+    padding: 10px;
+    text-align: left;
+}
+
+.education-section thead {
+    background-color: #1b2a4a;
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   Skills section - Flexbox
+   Each skill list is its own flex container laid out as a row that wraps,
+   so the skill "chips" flow naturally instead of overflowing off the page
+   on smaller screens.
+   ========================================================================== */
+
+.skills-section h2 {
+    color: #1b2a4a;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.skill-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.skill-list li {
+    background-color: #e3ebfb;
+    color: #1b2a4a;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   Projects section - Grid
+   Each project's screenshots sit in their own grid container. Using
+   auto-fit with minmax lets the number of columns adjust automatically
+   based on how much space is available, so it stays responsive without
+   media queries.
+   ========================================================================== */
+
+.projects-section h2 {
+    color: #1b2a4a;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-gap: 20px;
+    margin: 15px 0 25px;
+}
+
+.project-grid figure {
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+    /* Bonus: box-shadow for a bit of depth on each project card */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.project-grid figure:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+.project-grid img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.project-grid figcaption {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: #555;
+}
+
+/* ==========================================================================
+   Footer / Contact Information - Positioning
+   The footer is the grid area at the bottom of the page. I gave the
+   contact-info block position: relative with a small top/left offset just
+   to demonstrate nudging an element out of normal flow, per Step 6.
+   ========================================================================== */
+
+.footer {
+    grid-area: footer;
+    background-color: #1b2a4a;
+    color: #ffffff;
+    padding: 25px 40px;
+    position: relative;
+}
+
+.contact-info {
+    position: relative;
+    top: -5px;
+    left: 5px;
+}
+
+.contact-info h2 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.contact-info ul {
+    list-style: none;
+}
+
+.contact-info li {
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+}
+
+.contact-info a {
+    color: #a9c2f7;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+.watermark {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    font-size: 0.75rem;
+    color: #9fb0d0;
+}
