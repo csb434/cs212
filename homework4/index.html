@@ -1,1 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
+    <!-- The <head> element contains meta information about the webpage. -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- This is the title of my personal portfolio website. It appears in the browser tab at the top of the screen. -->
+
+    <title>My Personal Portfolio</title>
+
+    <!-- Linking my stylesheet here. All the Grid, Flexbox, and positioning work for this assignment lives in style.css so the HTML stays focused on structure and content. -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<!-- Body indicates things like headings and paragraphs. -->
+
+<body>
+
+<!-- I wrapped everything in this .page div so I have one single Grid container to build the whole layout on top of - header, sidebar, main content, and footer. -->
+<div class="page">
+
+    <!-- This first part contains my name and the title of my portfolio. -->
+
+    <!-- the <header> element contains the main heading and subheading for the page (h1 and h2). This is the "header" grid area, running across the full width at the top. I made this sticky in the CSS so it stays pinned to the top of the screen as I scroll, instead of scrolling out of view. -->
+
+    <header class="header">
+        <h1>Christian Braun</h1>
+        <h2>Cybersecurity Student and Information Technology Prospect</h2>
+    </header>
+
+    <!-- This is my left navigation sidebar for the assignment. It's the "sidebar" grid area. I used Flexbox inside it (flex-direction: column) to stack the nav links vertically and space them out evenly down the sidebar. -->
+
+    <nav class="sidebar">
+        <ul class="nav-list">
+            <li><a href="#about">Summary</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact Information</a></li>
+        </ul>
+
+        <!-- This is my resume download button. I positioned it absolutely inside the sidebar so it sits fixed near the bottom of the nav no matter how long the link list gets, and styled it separately in the CSS with a background color, rounded corners, and a hover effect. -->
+        <a href="christian_braun_resume.pdf" download class="resume-btn">Download Resume</a>
+    </nav>
+
+    <!-- The <main> element holds all my main content sections and is the "main" grid area. In the CSS I turned this into its own Grid container with named areas for each section (Skills and Projects sit side by side on a wide screen), and I added media queries at 1024px, 768px, and 480px so everything collapses down to a single column and the sidebar turns into a horizontal bar as the screen gets narrower. -->
+
+    <main class="main-content">
+
+        <!-- This next section contains information about myself. I use the <strong> HTML text element by name to emphasize my name in bold. I could use the <b> element instead, but the <strong> element is more semantically correct. -->
+
+        <section id="about" class="summary-section">
+
+            <h2>About Me</h2>
+
+            <p>
+                Hello, my name is <strong>Christian Braun</strong> and I am from Chicago, Illinois. I am currently
+                pursuing my degree in <em>Cybersecurity</em>.
+                I am interested in technology, computers, networking, and learning
+                how computer systems can be protected from security threats.
+            </p>
+
+            <!-- I then use the <em> element to emphasize and italicize the word "Cybersecurity". When the webpage is viewed normally, it will be displayed in italics. I could use the <i> element instead, but the <em> element is more semantically correct, just like the <strong> element. -->
+
+            <p>
+                My goal is to continue developing my technical skills and eventually
+                build a career in the field of <mark>Cybersecurity</mark>.
+
+                <!-- Here, I use the <mark> element to highlight the word "Cybersecurity" in yellow to show its importance and relevance to my portfolio. -->
+
+            </p>
+        </section>
+
+
+        <section id="skills" class="skills-section">
+
+            <!-- For my Skills section, I switched from plain paragraphs to <ul> and <ol> lists so each category of skill is grouped and easier to scan. In the CSS, I turned each list into a Flexbox row with flex-wrap so the skill "chips" wrap onto new lines on smaller screens instead of overflowing. -->
+
+            <h2>Skills</h2>
+
+            <h3>Programming Languages</h3>
+            <ul class="skill-list">
+                <li>C</li>
+                <li>C++</li>
+                <li>HTML</li>
+            </ul>
+
+            <h3>Technical Skills</h3>
+            <ul class="skill-list">
+                <li>Troubleshooting</li>
+                <li>Networking</li>
+                <li>Problem-solving</li>
+                <li>Understanding computer systems</li>
+            </ul>
+
+            <h3>Currently Learning</h3>
+            <ol class="skill-list">
+                <li>Creating webpages</li>
+                <li>Cybersecurity concepts</li>
+            </ol>
+
+        </section>
+
+
+        <section id="projects" class="projects-section">
+
+            <h2>Projects</h2>
+
+            <h3>Personal Portfolio Website</h3>
+
+            <!-- Here I use the <strong> element to emphasize and bold the words "HTML text formatting elements". -->
+
+            <p>
+                I've created this personal portfolio website using my knowledge of <strong>HTML text formatting elements</strong> and basic webpage development.
+            </p>
+
+            <!-- I added a few screenshots of this project using <figure> and <figcaption>, so each image comes with a caption explaining what it's showing. I also wrote out alt text for each one. In the CSS I laid these figures out with Grid so they form a clean, even set of columns instead of just stacking. -->
+
+            <div class="project-grid">
+                <figure>
+                    <img src="portfolio_screenshot.png" alt="Screenshot of the portfolio homepage" width="300">
+                    <figcaption>Homepage layout of the portfolio site</figcaption>
+                </figure>
+                <figure>
+                    <img src="skills_section.png" alt="Screenshot of the portfolio skills section" width="300">
+                    <figcaption>Skills section using HTML lists</figcaption>
+                </figure>
+                <figure>
+                    <img src="phone_screenshot.png" alt="Screenshot of the portfolio in a mobile browser" width="300">
+                    <figcaption>Responsive view on a mobile screen</figcaption>
+                </figure>
+            </div>
+
+            <h3>C / C++ Programming Exercises</h3>
+
+            <!-- Using the <mark> element to highlight the programming languages C and C++. -->
+
+            <p>
+                I have completed programming exercises using <mark>C</mark> and
+                <mark>C++</mark>. These projects helped me practice my programming skills and problem-solving abilities.
+            </p>
+
+            <!-- I did the same thing here, adding screenshots of my C and C++ work with captions so it's clear what each one is, and they sit in the same project grid layout. -->
+
+            <div class="project-grid">
+                <figure>
+                    <img src="bruteforce_c_screenshot.png" alt="Screenshot of C program output in the terminal" width="300">
+                    <figcaption>Terminal output of a C program exercise</figcaption>
+                </figure>
+                <figure>
+                    <img src="cpp_source_code.png" alt="Screenshot of C++ source code in an editor" width="300">
+                    <figcaption>C++ source code in VS Code</figcaption>
+                </figure>
+            </div>
+
+            <!-- This is a small float-based image strip, separate from the Grid layout above, just to specifically show I know how the float property works. I floated each image left so they line up horizontally on the same row, and added a clearfix afterward so the float doesn't collapse the section around it. I also added a hover transition on these that fades and slightly scales the image. -->
+
+            <h3>Quick Preview Strip</h3>
+            <div class="float-gallery">
+                <img src="portfolio_screenshot.png" alt="Preview thumbnail of the portfolio homepage" class="float-img">
+                <img src="skills_section.png" alt="Preview thumbnail of the skills section" class="float-img">
+                <img src="phone_screenshot.png" alt="Preview thumbnail of the mobile view" class="float-img">
+            </div>
+
+        </section>
+
+        <!-- In this Education and Experience section, I talk about what schools I've been to and my work experience. I decided to lay it out as an HTML table instead of paragraphs, since it lines up the institution, degree, and dates in a way that's easier to read at a glance. -->
+
+        <section id="education" class="education-section">
+
+            <h2>Education and Experience</h2>
+
+            <table border="1" cellpadding="8" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Institution / Company</th>
+                        <th>Degree / Position</th>
+                        <th>Duration</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Northern Arizona University, Flagstaff, AZ</td>
+                        <td>B.S. in Cybersecurity (in progress)</td>
+                        <td>2026 &ndash; Present</td>
+                    </tr>
+                    <tr>
+                        <td>Steinmetz College Prep, Chicago, IL</td>
+                        <td>High School Diploma</td>
+                        <td>2015 &ndash; 2019</td>
+                    </tr>
+                    <tr>
+                        <td>Customer Service / Technical Support</td>
+                        <td>Support Representative</td>
+                        <td>June 2024 &ndash; February 2025</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- The reason I chose to use the <small> element here is to make the text smaller, it's not very important information, but it just serves as an additional note. -->
+
+            <p>
+                <small>
+                    I am continuously working to improve my Cybersecurity skills.
+                </small>
+            </p>
+
+        </section>
+
+        <!-- This is the bonus section. I talk about my learning journey and use additional HTML text formatting elements.-->
+
+        <section class="learning-section">
+
+            <h2>My Learning Journey</h2>
+
+            <!-- For this particular paragraph, I use the <del> and <ins> elements to show the changes in my coding experience over time. The <del> element is used to indicate deleted text, and appears as a strikethrough on the webpage. The <ins> element is used to indicate inserted text, and appears as underlined on the webpage. -->
+
+            <p>
+                My experience with coding went from
+                <del>"I have no idea what I'm doing."</del>
+                to <ins>"I'm starting to understand and feel more confident."</ins>
+            </p>
+
+            <!-- Using <mark> element to highlight how I am practicing consistently day by day.-->
+
+            <p>
+                My goal is to continue improving my skills by
+                <mark>practicing consistently</mark>.
+            </p>
+
+            <!-- Using the <strong> element to emphasize and bold my career goals. -->
+
+            <p>
+                I am currently working toward becoming a better
+                <strong>webpage developer</strong> and technology professional.
+            </p>
+
+        </section>
+
+    </main>
+
+    <!-- This is my footer, the "footer" grid area at the bottom of the page. Per the assignment, I moved my Contact Information here and used relative positioning on the footer with the contact block nudged into place using position: relative and a small top/left offset, so I could actually show I know how CSS positioning works instead of just leaving everything in normal document flow. -->
+
+    <footer id="contact" class="footer">
+
+        <!-- This section contains my contact information. I turned my email, phone number, and GitHub/LinkedIn into actual hyperlinks (mailto:, tel:, and regular links) so visitors can click straight through instead of copying and pasting. -->
+
+        <div class="contact-info">
+            <h2>Contact Information</h2>
+            <ul>
+                <li><strong>Email:</strong> <a href="mailto:csb434@nau.edu">csb434@nau.edu</a></li>
+                <li><strong>Phone:</strong> <a href="tel:+7738899976">(773) 889-9976</a></li>
+                <li><strong>GitHub:</strong> <a href="https://github.com/csb434" target="_blank" rel="noopener">github.com/csb434</a></li>
+                <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/christian-b-598aa3433" target="_blank" rel="noopener">linkedin.com/in/christian-braun</a></li>
+                <li><strong>Location:</strong> Flagstaff, Arizona</li>
+            </ul>
+        </div>
+
+        <!-- I use the <small> element here as a sort of watermark at the end of the portfolio.-->
+
+        <p class="watermark">
+            <small>
+                2026 Christian Braun. Personal Portfolio.
+            </small>
+        </p>
+
+    </footer>
+
+</div>
+
+</body>
+</html>
