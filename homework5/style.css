@@ -1,0 +1,565 @@
+/* ==========================================================================
+   Global resets
+   This just zeroes out the default margin and padding browsers add on
+   their own, and turns on border-box so my sizing math doesn't get thrown
+   off later when I'm doing Grid and Flexbox stuff.
+   ========================================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #222;
+    background-color: #f4f4f4;
+}
+
+/* ==========================================================================
+   Page layout - CSS Grid
+   This is the big wrapper div from my HTML. My header and footer are both
+   position: fixed now, so they don't actually take up a spot in the grid
+   anymore, they just float on top of everything. Because of that this grid
+   only really needs two areas, sidebar and main. I added padding on top
+   and bottom that matches the height of my header and footer so my
+   sidebar and main content don't end up hiding underneath them.
+   ========================================================================== */
+
+.page {
+    display: grid;
+    grid-template-areas: "sidebar main";
+    grid-template-columns: 220px 1fr;
+    grid-template-rows: 1fr;
+    align-items: start;
+    min-height: 100vh;
+    padding-top: 90px;
+    padding-bottom: 70px;
+}
+
+/* This is my header. I switched it from sticky over to position: fixed so
+   it's locked to the very top of the screen no matter what, even when I
+   scroll way down. I made it a flex column so the h1 and h2 stay centered
+   nicely, and flex-shrink: 0 stops it from getting squished if the window
+   gets narrow. */
+
+.header {
+    background-color: #1b2a4a;
+    color: #ffffff;
+    padding: 15px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 90px;
+    z-index: 100;
+}
+
+.header h2 {
+    font-weight: normal;
+    font-size: 1rem;
+    margin-top: 5px;
+    color: #cbd5f0;
+}
+
+/* ==========================================================================
+   Sidebar - Flexbox
+   My sidebar is a flex column, so the nav list and the resume button stack
+   on top of each other. justify-content pushes the resume button down
+   toward the bottom, and align-items keeps everything lined up nicely in
+   this narrow space.
+   ========================================================================== */
+
+.sidebar {
+    grid-area: sidebar;
+    background-color: #24344d;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: 20px 15px;
+    position: relative;
+    min-height: calc(100vh - 90px - 70px);
+}
+
+/* This is my nav bar. It's a flex column and I gave each li flex-grow so
+   they all stretch out and take up equal space down the sidebar instead of
+   just clumping together near the top. Each li is also its own little flex
+   box with everything centered inside it, both up and down and side to
+   side. Clicking one of these just jumps you down to that part of the
+   page. */
+
+.nav-list {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    list-style: none;
+    flex-grow: 1;
+}
+
+.nav-list li {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-list a {
+    color: #e8ecf7;
+    text-decoration: none;
+    font-size: 0.95rem;
+    padding: 8px 10px;
+    border-radius: 4px;
+    width: 100%;
+    text-align: center;
+}
+
+.nav-list a:hover {
+    background-color: #3b527a;
+}
+
+/* This is my resume download button. It's position: absolute so it hangs
+   out near the bottom of the sidebar no matter how tall the nav list ends
+   up being. I gave it a background color, rounded corners, and a little
+   glow effect when you hover over it so it actually feels clickable. */
+
+.resume-btn {
+    position: absolute;
+    bottom: 20px;
+    left: 15px;
+    right: 15px;
+    text-align: center;
+    background-color: #4c8bf5;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    box-shadow: 0 0 0 rgba(76, 139, 245, 0);
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.resume-btn:hover {
+    background-color: #2f6ed6;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(76, 139, 245, 0.7);
+}
+
+/* ==========================================================================
+   Main content container - Flexbox
+   I switched this over to Flexbox with flex-direction: column, so my
+   sections just naturally stack one after another, Skills then Projects
+   then Education and so on. flex-wrap lets things reflow if they need to,
+   and I gave every section flex-grow and flex-shrink so they can expand or
+   shrink instead of staying stuck at one size. The padding keeps
+   everything from touching the edges of the window when I resize it. I
+   still use Grid inside the Skills and Projects sections themselves though,
+   just further down.
+   ========================================================================== */
+
+.main-content {
+    grid-area: main;
+    padding: 30px 40px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 35px;
+}
+
+.main-content > section {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+}
+
+/* Just some basic styling on my Summary and Education headings and text,
+   font size, color, a little margin and padding so it's not all crammed
+   together. */
+
+.summary-section h2,
+.education-section h2 {
+    color: #1b2a4a;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #4c8bf5;
+}
+
+.summary-section p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 12px;
+    padding: 5px 0;
+}
+
+.education-section table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.education-section th,
+.education-section td {
+    padding: 10px;
+    text-align: left;
+}
+
+.education-section thead {
+    background-color: #1b2a4a;
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   Skills section - Grid
+   Each skill list is its own grid using repeat(auto-fill, minmax()). That
+   lets the browser figure out on its own how many columns actually fit
+   based on the space it has, and each chip is at least 110px wide but can
+   stretch out if there's extra room. The featured-skill class uses
+   grid-column: span 2 so a couple of my skills take up double the space
+   and stand out a bit more.
+   ========================================================================== */
+
+.skills-section h2 {
+    color: #1b2a4a;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.skill-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 10px;
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.skill-list li {
+    background-color: #e3ebfb;
+    color: #1b2a4a;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    text-align: center;
+    transition: transform 0.25s ease-in-out, background-color 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+}
+
+.skill-list li.featured-skill {
+    grid-column: span 2;
+    font-weight: bold;
+    background-color: #cfe0fb;
+}
+
+/* When you hover over a skill chip it scales up a little and tilts
+   slightly using transform, and the transition up above is what makes
+   that happen smoothly instead of just snapping into place. */
+
+.skill-list li:hover {
+    transform: scale(1.12) rotate(-2deg);
+    background-color: #c7d8fb;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* ==========================================================================
+   Projects section - Grid
+   My project screenshots sit in their own grid. Using auto-fit with
+   minmax lets the number of columns adjust on its own depending on how
+   much space is available, so it stays responsive without me having to
+   write extra media queries just for this part.
+   ========================================================================== */
+
+.projects-section h2 {
+    color: #1b2a4a;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-gap: 20px;
+    margin: 15px 0 25px;
+}
+
+.project-grid figure {
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+    /* Just a little box-shadow here so the cards have some depth to them. */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* I marked my main project as featured-project so it spans two columns
+   and two rows instead of just one box like the rest. That way it stands
+   out as the main project instead of blending in with everything else. */
+
+.project-grid figure.featured-project {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.project-grid figure.featured-project img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.project-grid figure:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+.project-grid img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
+}
+
+.project-grid img:hover {
+    opacity: 0.85;
+    transform: scale(1.03);
+}
+
+.project-grid figcaption {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: #555;
+}
+
+/* This little strip of images uses float instead of Grid, just to show I
+   know how that property works too. I floated each one left so they sit
+   next to each other in a row, then used a clearfix on the parent (the
+   ::after rule) so the floats don't collapse the container down to
+   nothing. These also fade a little and scale up slightly when you hover
+   over them. */
+
+.float-gallery {
+    margin: 15px 0 5px;
+}
+
+.float-gallery::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.float-img {
+    float: left;
+    width: 120px;
+    height: auto;
+    margin: 0 15px 15px 0;
+    border-radius: 6px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
+}
+
+.float-img:hover {
+    opacity: 0.8;
+    transform: scale(1.06);
+}
+
+/* ==========================================================================
+   Footer - Fixed with Flexbox
+   I switched my footer over to position: fixed too, so it stays stuck to
+   the bottom of the screen the same way my header sticks to the top.
+   flex-shrink: 0 keeps it from getting squished. I used Flexbox with
+   space-between to put my contact info on one side and my little
+   copyright note on the other, which ended up being a cleaner way to line
+   things up than what I was doing before.
+   ========================================================================== */
+
+.footer {
+    background-color: #1b2a4a;
+    color: #ffffff;
+    padding: 10px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 25px;
+    flex-shrink: 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    min-height: 70px;
+    z-index: 100;
+}
+
+.contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 18px;
+}
+
+.contact-info h2 {
+    font-size: 0.95rem;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.contact-info ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 15px;
+    list-style: none;
+}
+
+.contact-info li {
+    font-size: 0.75rem;
+}
+
+.contact-info a {
+    color: #a9c2f7;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+.watermark {
+    font-size: 0.7rem;
+    color: #9fb0d0;
+    white-space: nowrap;
+}
+
+/* ==========================================================================
+   Responsive breakpoints
+   I built this starting from the desktop layout and worked my way down, so
+   these media queries scale things down as the screen gets smaller. 1024px
+   is basically a smaller laptop or big tablet, 768px is a regular tablet,
+   and 480px is phone sized.
+   ========================================================================== */
+
+/* Once the screen gets down to a smaller laptop or tablet size, my
+   featured project doesn't really have room to span two columns anymore,
+   so I let it shrink back down to a normal single card here. */
+@media (max-width: 1024px) {
+    .project-grid figure.featured-project {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    .project-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+}
+
+/* At tablet and mobile width there's not enough room for a 220px sidebar
+   sitting next to my content, so I turned it into a horizontal bar that
+   sits above the main content instead. Since my header and footer are
+   fixed now instead of being grid items, this only has to deal with
+   sidebar and main. */
+@media (max-width: 768px) {
+    .page {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "sidebar"
+            "main";
+    }
+
+    .sidebar {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        min-height: auto;
+    }
+
+    .nav-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        flex-grow: 0;
+    }
+
+    .nav-list li {
+        flex-grow: 1;
+    }
+
+    /* The resume button doesn't need position: absolute anymore once the
+       sidebar turns into a short horizontal bar, so I just let it sit in
+       normal flow here so it doesn't overlap the nav links. */
+    .resume-btn {
+        position: static;
+        margin-top: 10px;
+        width: 200px;
+    }
+
+    .main-content {
+        padding: 25px 20px;
+    }
+}
+
+/* On phones I shrunk down the spacing and font sizes, and dropped the
+   project grid and float gallery to one column so nothing gets squeezed
+   too tiny to read. My header and footer shrink a bit here too, and I
+   gave the page some extra bottom padding since the footer's contact list
+   is more likely to wrap onto two lines at this width. */
+@media (max-width: 480px) {
+    .page {
+        padding-top: 75px;
+        padding-bottom: 100px;
+    }
+
+    .header {
+        padding: 10px 20px;
+        height: 75px;
+    }
+
+    .header h1 {
+        font-size: 1.4rem;
+    }
+
+    .header h2 {
+        font-size: 0.85rem;
+    }
+
+    .main-content {
+        padding: 15px 20px;
+        gap: 25px;
+    }
+
+    .skill-list {
+        gap: 8px;
+    }
+
+    .skill-list li {
+        font-size: 0.8rem;
+        padding: 5px 12px;
+    }
+
+    .skill-list li.featured-skill {
+        grid-column: span 2;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-grid figure.featured-project {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    .float-img {
+        width: 90px;
+    }
+
+    .footer {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 20px;
+    }
+}
