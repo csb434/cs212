@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- This head part just holds info about the page that you don't actually see on screen. -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- This is the title that shows up in the browser tab. -->
+
+    <title>My Personal Portfolio</title>
+
+    <!-- This links my CSS file to this HTML file. Basically all my styling, colors, layout, and animations live in style.css so this file can just focus on the actual content. -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<!-- I put everything inside this one big div called page. That way it's all one container and I can use Grid on it to set up the header, sidebar, main content, and footer. -->
+<div class="page">
+
+    <!-- This is my header with my name and a little subtitle. I made it position: fixed in the CSS so it stays stuck to the top of the screen the whole time, even when I scroll way down. -->
+
+    <header class="header">
+        <h1>Christian Braun</h1>
+        <h2>Cybersecurity Student and Information Technology Prospect</h2>
+    </header>
+
+    <!-- This is my sidebar with all my nav links. I used Flexbox to stack them in a column, and I gave each link flex-grow so they spread out evenly and fill the whole sidebar instead of just bunching up near the top. Clicking one of these just scrolls you down to that section on the page. -->
+
+    <nav class="sidebar">
+        <ul class="nav-list">
+            <li><a href="#about">Summary</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact Information</a></li>
+        </ul>
+
+        <!-- This is my resume download button. It's positioned near the bottom of the sidebar so it's always easy to find, and I gave it a hover effect and rounded corners so it actually looks like a button instead of just plain text. -->
+        <a href="christian_braun_resume.pdf" download class="resume-btn">Download Resume</a>
+    </nav>
+
+    <!-- This main part holds basically all the content on my site. I used Flexbox here so the sections stack one after another and can grow or shrink depending on how much room they have. Inside the Skills and Projects sections I switched to Grid instead, since that fit those two better. -->
+
+    <main class="main-content">
+
+        <!-- This first section is just a quick intro about me. I used strong to bold my name since that's a little more proper than just using b for bold text. -->
+
+        <section id="about" class="summary-section">
+
+            <h2>About Me</h2>
+
+            <p>
+                Hello, my name is <strong>Christian Braun</strong> and I am from Chicago, Illinois. I am currently
+                pursuing my degree in <em>Cybersecurity</em>.
+                I am interested in technology, computers, networking, and learning
+                how computer systems can be protected from security threats.
+            </p>
+
+            <!-- I used em here to italicize the word Cybersecurity since it shows up in italics on the page. Kind of the same deal as strong, it's just the more correct tag to use instead of i. -->
+
+            <p>
+                My goal is to continue developing my technical skills and eventually
+                build a career in the field of <mark>Cybersecurity</mark>.
+
+                <!-- I used mark here to highlight Cybersecurity in yellow since that's basically the main point of this whole section. -->
+
+            </p>
+        </section>
+
+
+        <section id="skills" class="skills-section">
+
+            <!-- For my skills, I used Grid instead of just a regular list layout. It automatically figures out how many columns fit based on the screen size, which is pretty handy. I also made two of my skills stand out a little more by having them take up double the space in the grid. -->
+
+            <h2>Skills</h2>
+
+            <h3>Programming Languages</h3>
+            <ul class="skill-list">
+                <li>C</li>
+                <li class="featured-skill">C++</li>
+                <li>HTML</li>
+            </ul>
+
+            <h3>Technical Skills</h3>
+            <ul class="skill-list">
+                <li>Troubleshooting</li>
+                <li>Networking</li>
+                <li class="featured-skill">Problem-solving</li>
+                <li>Understanding computer systems</li>
+            </ul>
+
+            <h3>Currently Learning</h3>
+            <ol class="skill-list">
+                <li>Creating webpages</li>
+                <li>Cybersecurity concepts</li>
+            </ol>
+
+        </section>
+
+
+        <section id="projects" class="projects-section">
+
+            <h2>Projects</h2>
+
+            <h3>Personal Portfolio Website</h3>
+
+            <!-- I bolded HTML text formatting elements here just to call it out a little. -->
+
+            <p>
+                I've created this personal portfolio website using my knowledge of <strong>HTML text formatting elements</strong> and basic webpage development.
+            </p>
+
+            <!-- I added a couple screenshots of this project, each one has its own caption explaining what it is and alt text describing the image. They're laid out with Grid so they line up nicely in columns. I also made the first screenshot bigger than the others since that's the one I want people to notice first. -->
+
+            <div class="project-grid">
+                <figure class="featured-project">
+                    <img src="portfolio_screenshot.png" alt="Screenshot of the portfolio homepage" width="300">
+                    <figcaption>Homepage layout of the portfolio site</figcaption>
+                </figure>
+                <figure>
+                    <img src="skills_section.png" alt="Screenshot of the portfolio skills section" width="300">
+                    <figcaption>Skills section using HTML lists</figcaption>
+                </figure>
+                <figure>
+                    <img src="phone_screenshot.png" alt="Screenshot of the portfolio in a mobile browser" width="300">
+                    <figcaption>Responsive view on a mobile screen</figcaption>
+                </figure>
+            </div>
+
+            <h3>C / C++ Programming Exercises</h3>
+
+            <!-- Marking C and C++ with mark just to make them pop a little since those are the languages I want people to notice. -->
+
+            <p>
+                I have completed programming exercises using <mark>C</mark> and
+                <mark>C++</mark>. These projects helped me practice my programming skills and problem-solving abilities.
+            </p>
+
+            <!-- Same idea here, just some screenshots of my C and C++ work with captions so people know what they're looking at. -->
+
+            <div class="project-grid">
+                <figure>
+                    <img src="bruteforce_c_screenshot.png" alt="Screenshot of C program output in the terminal" width="300">
+                    <figcaption>Terminal output of a C program exercise</figcaption>
+                </figure>
+                <figure>
+                    <img src="cpp_source_code.png" alt="Screenshot of C++ source code in an editor" width="300">
+                    <figcaption>C++ source code in VS Code</figcaption>
+                </figure>
+            </div>
+
+            <!-- This little strip of images is separate from the grid above. I used float on these instead, just to show I know how that works too. Basically it makes the images line up side by side, and I added a hover effect where they fade a little and grow slightly when you mouse over them. -->
+
+            <h3>Quick Preview Strip</h3>
+            <div class="float-gallery">
+                <img src="portfolio_screenshot.png" alt="Preview thumbnail of the portfolio homepage" class="float-img">
+                <img src="skills_section.png" alt="Preview thumbnail of the skills section" class="float-img">
+                <img src="phone_screenshot.png" alt="Preview thumbnail of the mobile view" class="float-img">
+            </div>
+
+        </section>
+
+        <!-- This section covers my schools and work experience. I used an actual HTML table for this instead of paragraphs since it's a lot easier to read when everything lines up in columns like this. -->
+
+        <section id="education" class="education-section">
+
+            <h2>Education and Experience</h2>
+
+            <table border="1" cellpadding="8" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Institution / Company</th>
+                        <th>Degree / Position</th>
+                        <th>Duration</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Northern Arizona University, Flagstaff, AZ</td>
+                        <td>B.S. in Cybersecurity (in progress)</td>
+                        <td>2026 &ndash; Present</td>
+                    </tr>
+                    <tr>
+                        <td>Steinmetz College Prep, Chicago, IL</td>
+                        <td>High School Diploma</td>
+                        <td>2015 &ndash; 2019</td>
+                    </tr>
+                    <tr>
+                        <td>Customer Service / Technical Support</td>
+                        <td>Support Representative</td>
+                        <td>June 2024 &ndash; February 2025</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Used small here since this last bit is just a side note, not really important info. -->
+
+            <p>
+                <small>
+                    I am continuously working to improve my Cybersecurity skills.
+                </small>
+            </p>
+
+        </section>
+
+        <!-- This last section is just a little bonus one about how my coding skills have grown. -->
+
+        <section class="learning-section">
+
+            <h2>My Learning Journey</h2>
+
+            <!-- Using del and ins here to show how I felt about coding before versus now. del shows up with a line through it like it's crossed out, and ins shows up underlined like something got added in. -->
+
+            <p>
+                My experience with coding went from
+                <del>"I have no idea what I'm doing."</del>
+                to <ins>"I'm starting to understand and feel more confident."</ins>
+            </p>
+
+            <!-- Highlighting practicing consistently since that's kind of the main takeaway of this section. -->
+
+            <p>
+                My goal is to continue improving my skills by
+                <mark>practicing consistently</mark>.
+            </p>
+
+            <!-- Bolding my career goal here since it's basically the point I'm trying to make. -->
+
+            <p>
+                I am currently working toward becoming a better
+                <strong>webpage developer</strong> and technology professional.
+            </p>
+
+        </section>
+
+    </main>
+
+    <!-- This is my footer. I made it position: fixed too, so it stays stuck to the bottom no matter where you scroll. I used Flexbox to line up my contact info on one side and the little copyright note on the other. -->
+
+    <footer id="contact" class="footer">
+
+        <!-- This is my contact info. I turned my email and phone into actual clickable links using mailto and tel, so people can just tap them instead of copying and pasting. -->
+
+        <div class="contact-info">
+            <h2>Contact Information</h2>
+            <ul>
+                <li><strong>Email:</strong> <a href="mailto:csb434@nau.edu">csb434@nau.edu</a></li>
+                <li><strong>Phone:</strong> <a href="tel:+7738899976">(773) 889-9976</a></li>
+                <li><strong>GitHub:</strong> <a href="https://github.com/csb434" target="_blank" rel="noopener">github.com/csb434</a></li>
+                <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/christian-b-598aa3433" target="_blank" rel="noopener">linkedin.com/in/christian-braun</a></li>
+                <li><strong>Location:</strong> Flagstaff, Arizona</li>
+            </ul>
+        </div>
+
+        <!-- Just a little watermark at the very end of the page using small text. -->
+
+        <p class="watermark">
+            <small>
+                2026 Christian Braun. Personal Portfolio.
+            </small>
+        </p>
+
+    </footer>
+
+</div>
+
+</body>
+</html>
