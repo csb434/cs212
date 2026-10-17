@@ -1,0 +1,147 @@
+/* ==========================================================================
+   Fonts
+   Bootstrap has its own default font, so I'm overriding it here with the
+   two Google Fonts I picked. font-header is just for my headings, and the
+   body rule handles everything else.
+   ========================================================================== */
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+.font-header {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ==========================================================================
+   Fixed header and footer offsets
+   Bootstrap's fixed-top and fixed-bottom classes pin the header and footer
+   to the screen, but they don't automatically push the rest of the page
+   content out of the way. So I added this padding on the body to match
+   roughly how tall my header and footer end up being, otherwise my
+   sidebar and main content would start out hidden underneath them.
+   ========================================================================== */
+
+body {
+    padding-top: 80px;
+    padding-bottom: 50px;
+}
+
+/* ==========================================================================
+   Sidebar
+   This just makes sure my sidebar stretches down the full height of the
+   page even if the nav list itself is short, so it doesn't look like a
+   tiny box floating at the top.
+   ========================================================================== */
+
+.sidebar {
+    min-height: calc(100vh - 130px);
+}
+
+.sidebar .nav-link {
+    color: #e8ecf7;
+}
+
+.sidebar .nav-link:hover {
+    background-color: #3b527a;
+    color: #ffffff;
+}
+
+/* My resume button is a Bootstrap btn now, but I added this little glow on
+   hover since Bootstrap's own hover state is pretty subtle and I wanted it
+   to feel a bit more alive when you mouse over it. */
+
+.resume-btn {
+    transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.resume-btn:hover {
+    box-shadow: 0 6px 18px rgba(76, 139, 245, 0.5);
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   Skill and project cards
+   Bootstrap Cards already look clean on their own, I just added a little
+   hover lift and shadow so they feel more interactive, same idea as the
+   hover effects I had before, just applied to actual Bootstrap cards now
+   instead of my own custom boxes.
+   ========================================================================== */
+
+.skill-card,
+.project-card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.skill-card:hover,
+.project-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.featured-skill-card {
+    background-color: #e3ebfb;
+}
+
+.featured-project-card {
+    border-width: 2px;
+}
+
+.project-card img {
+    transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
+}
+
+.project-card:hover img {
+    opacity: 0.9;
+    transform: scale(1.03);
+}
+
+/* ==========================================================================
+   Float gallery
+   Same float strip from a couple assignments back. Floated left so the
+   images line up next to each other, with a clearfix after so the
+   container doesn't collapse, and a little fade and scale on hover.
+   ========================================================================== */
+
+.float-gallery {
+    margin: 15px 0 5px;
+}
+
+.float-gallery::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.float-img {
+    float: left;
+    width: 120px;
+    height: auto;
+    margin: 0 15px 15px 0;
+    border-radius: 6px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
+}
+
+.float-img:hover {
+    opacity: 0.8;
+    transform: scale(1.06);
+}
+
+/* ==========================================================================
+   Small responsive tweak
+   Bootstrap's grid handles almost all of my responsiveness now, this is
+   really the only extra adjustment I needed, just a bit less padding on
+   really small phone screens so things aren't too cramped.
+   ========================================================================== */
+
+@media (max-width: 480px) {
+    .main-content {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    body {
+        padding-top: 95px;
+    }
+}

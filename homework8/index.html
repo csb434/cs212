@@ -1,1 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
+    <!-- Head stuff, just metadata the browser needs. -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Personal Portfolio</title>
+
+    <!-- Google Fonts for this assignment. I'm using Poppins for my headings since it's a little bolder and more "header looking," and Inter for all my body text since it's easier to read in smaller sizes. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- This is the actual Bootstrap framework, linked straight from their CDN. This is what gives me the grid system, the navbar, cards, tables, and buttons I'm using all over this page now. -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- My own stylesheet goes after Bootstrap so it can override a few things, like my fonts and some hover effects Bootstrap doesn't really do on its own. -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<!-- This is my header. I used Bootstrap's fixed-top class to pin it to the top of the screen, and bg-gradient on top of bg-primary gives it that subtle gradient look Bootstrap has built in. I used container-fluid and row here like the assignment asked, just to structure it the Bootstrap way instead of plain divs. -->
+
+<header class="site-header bg-primary bg-gradient text-white fixed-top shadow-sm py-3">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col">
+                <h1 class="font-header display-6 fw-bold mb-0">Christian Braun</h1>
+                <h2 class="font-header fs-6 fw-normal mb-0">Cybersecurity Student and Information Technology Prospect</h2>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- This is my sidebar, but now it's built with Bootstrap's actual navbar component instead of just a plain Flexbox div like before. I kept it vertical using flex-column, and each nav-item has flex-fill so they still spread out evenly like they did last time. Clicking a link still just jumps down to that section. -->
+
+        <nav class="col-12 col-md-3 col-lg-2 bg-dark navbar navbar-dark flex-column align-items-stretch sidebar px-0">
+            <ul class="navbar-nav flex-column flex-grow-1 w-100">
+                <li class="nav-item flex-fill d-flex"><a class="nav-link text-center flex-grow-1 d-flex align-items-center justify-content-center" href="#about">Summary</a></li>
+                <li class="nav-item flex-fill d-flex"><a class="nav-link text-center flex-grow-1 d-flex align-items-center justify-content-center" href="#education">Education</a></li>
+                <li class="nav-item flex-fill d-flex"><a class="nav-link text-center flex-grow-1 d-flex align-items-center justify-content-center" href="#skills">Skills</a></li>
+                <li class="nav-item flex-fill d-flex"><a class="nav-link text-center flex-grow-1 d-flex align-items-center justify-content-center" href="#projects">Projects</a></li>
+                <li class="nav-item flex-fill d-flex"><a class="nav-link text-center flex-grow-1 d-flex align-items-center justify-content-center" href="#contact">Contact Information</a></li>
+            </ul>
+
+            <!-- This is my resume button, now using Bootstrap's actual btn component (btn and btn-light) instead of me styling a link by hand. I still added a tiny bit of custom hover glow in my own CSS since Bootstrap's default hover is pretty subtle. It also has an id now so app.js can grab it and listen for clicks. -->
+            <a href="christian_braun_resume.pdf" download id="resume-download-btn" class="btn btn-light resume-btn m-3">Download Resume</a>
+
+            <!-- This little line shows how many times the resume has been downloaded. It starts at 0 and app.js updates the number every time the button gets clicked. -->
+            <p class="text-white-50 small text-center mb-3">Resume downloads: <span id="download-count">0</span></p>
+        </nav>
+
+        <!-- This is my main content area. I wrapped it in a Bootstrap column (col-md-9 col-lg-10) so it automatically resizes next to the sidebar, and every section inside uses Bootstrap's row and col classes to lay things out instead of my old custom Grid and Flexbox rules. -->
+
+        <main class="col-12 col-md-9 col-lg-10 main-content py-4 px-4 px-md-5">
+
+            <!-- About Me section. Using Bootstrap's "lead" class on the paragraphs just makes the text a little bigger and lighter weight, which Bootstrap's typography utilities are built for. -->
+
+            <section id="about" class="mb-5">
+
+                <h2 class="font-header">About Me</h2>
+
+                <!-- This paragraph starts out empty. app.js fills it in with a greeting as soon as the page loads, using a function called showGreeting() that builds the message out of my name. -->
+                <p id="dynamic-greeting" class="fs-5 fw-semibold text-primary"></p>
+
+                <p class="lead">
+                    Hello, my name is <strong>Christian Braun</strong> and I am from Chicago, Illinois. I am currently
+                    pursuing my degree in <em>Cybersecurity</em>.
+                    I am interested in technology, computers, networking, and learning
+                    how computer systems can be protected from security threats.
+                </p>
+
+                <p class="lead">
+                    My goal is to continue developing my technical skills and eventually
+                    build a career in the field of <mark>Cybersecurity</mark>.
+                </p>
+            </section>
+
+
+            <section id="skills" class="mb-5">
+
+                <!-- For skills, I swapped my old list layout for Bootstrap Cards inside a row of columns. Each skill gets its own small card, and I made C++ and Problem-solving take up a wider column (col-md-6 instead of col-md-3) so they visually stand out as the ones I want people to notice first. -->
+
+                <h2 class="font-header">Skills</h2>
+
+                <h3 class="fs-5 fw-semibold mt-3">Programming Languages</h3>
+                <div class="row g-3 mb-4">
+                    <div class="col-6 col-sm-4 col-md-3">
+                        <div class="card h-100 text-center skill-card">
+                            <div class="card-body py-2"><p class="card-text mb-0">C</p></div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-4 col-md-6">
+                        <div class="card h-100 text-center border-primary skill-card featured-skill-card">
+                            <div class="card-body py-2"><p class="card-text fw-bold mb-0">C++</p></div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-3">
+                        <div class="card h-100 text-center skill-card">
+                            <div class="card-body py-2"><p class="card-text mb-0">HTML</p></div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="fs-5 fw-semibold mt-3">Technical Skills</h3>
+                <div class="row g-3 mb-4">
+                    <div class="col-6 col-sm-4 col-md-3">
+                        <div class="card h-100 text-center skill-card">
+                            <div class="card-body py-2"><p class="card-text mb-0">Troubleshooting</p></div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-3">
+                        <div class="card h-100 text-center skill-card">
+                            <div class="card-body py-2"><p class="card-text mb-0">Networking</p></div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-8 col-md-6">
+                        <div class="card h-100 text-center border-primary skill-card featured-skill-card">
+                            <div class="card-body py-2"><p class="card-text fw-bold mb-0">Problem-solving</p></div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-4 col-md-3">
+                        <div class="card h-100 text-center skill-card">
+                            <div class="card-body py-2"><p class="card-text mb-0">Understanding computer systems</p></div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="fs-5 fw-semibold mt-3">Currently Learning</h3>
+                <div class="row g-3 mb-2">
+                    <div class="col-6 col-sm-4 col-md-3">
+                        <div class="card h-100 text-center skill-card">
+                            <div class="card-body py-2"><p class="card-text mb-0">Creating webpages</p></div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-3">
+                        <div class="card h-100 text-center skill-card">
+                            <div class="card-body py-2"><p class="card-text mb-0">Cybersecurity concepts</p></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- This is the form where someone can type in a new skill and add it to my list. I used Bootstrap's input-group so the text box and the button sit together on one line. The form has an id so app.js can listen for it being submitted. -->
+
+                <h3 class="fs-5 fw-semibold mt-4">Add a Skill</h3>
+                <form id="skill-form" class="mb-2">
+                    <div class="input-group">
+                        <input type="text" id="skill-input" class="form-control" placeholder="Type a skill, like Python" aria-label="New skill">
+                        <button type="submit" class="btn btn-primary">Add Skill</button>
+                    </div>
+                </form>
+
+                <!-- This small line is for messages, like telling the person if they tried to add an empty skill. -->
+                <p id="skill-message" class="small text-danger mb-3"></p>
+
+                <!-- Any skills that get added show up here as cards, using the same card style as the rest of my skills. This starts out empty and app.js fills it in. -->
+                <div class="row g-3 mb-2" id="added-skills"></div>
+
+            </section>
+
+
+            <section id="projects" class="mb-5">
+
+                <h2 class="font-header">Projects</h2>
+
+                <h3 class="fs-5 fw-semibold mt-3">Personal Portfolio Website</h3>
+
+                <p>
+                    I've created this personal portfolio website using my knowledge of <strong>HTML text formatting elements</strong> and basic webpage development.
+                </p>
+
+                <!-- These project screenshots are Bootstrap Cards now too, with card-img-top for the image and card-body for the caption. My homepage screenshot gets a wider column (col-md-8) than the other two, which is basically the Bootstrap way of doing what I did with Grid spanning before. -->
+
+                <div class="row g-4 mb-3">
+                    <div class="col-12 col-md-8">
+                        <div class="card h-100 shadow-sm project-card featured-project-card">
+                            <img src="portfolio_screenshot.png" class="card-img-top" alt="Screenshot of the portfolio homepage">
+                            <div class="card-body">
+                                <h5 class="card-title fs-6">Homepage Layout</h5>
+                                <p class="card-text small text-muted mb-0">Homepage layout of the portfolio site</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-2">
+                        <div class="card h-100 shadow-sm project-card">
+                            <img src="skills_section.png" class="card-img-top" alt="Screenshot of the portfolio skills section">
+                            <div class="card-body">
+                                <p class="card-text small text-muted mb-0">Skills section using HTML lists</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-2">
+                        <div class="card h-100 shadow-sm project-card">
+                            <img src="phone_screenshot.png" class="card-img-top" alt="Screenshot of the portfolio in a mobile browser">
+                            <div class="card-body">
+                                <p class="card-text small text-muted mb-0">Responsive view on a mobile screen</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- These project cards aren't typed out here anymore. app.js loops through my project arrays and builds a card for each one, with the title, description, deadline, and a status that says Ongoing or Completed depending on today's date. This div starts out empty. -->
+
+                <h3 class="fs-5 fw-semibold mt-3">Project Listings</h3>
+                <div class="row g-4 mb-4" id="project-listings"></div>
+
+                <h3 class="fs-5 fw-semibold mt-3">C / C++ Programming Exercises</h3>
+
+                <p>
+                    I have completed programming exercises using <mark>C</mark> and
+                    <mark>C++</mark>. These projects helped me practice my programming skills and problem-solving abilities.
+                </p>
+
+                <div class="row g-4 mb-4">
+                    <div class="col-6">
+                        <div class="card h-100 shadow-sm project-card">
+                            <img src="bruteforce_c_screenshot.png" class="card-img-top" alt="Screenshot of C program output in the terminal">
+                            <div class="card-body">
+                                <p class="card-text small text-muted mb-0">Terminal output of a C program exercise</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="card h-100 shadow-sm project-card">
+                            <img src="cpp_source_code.png" class="card-img-top" alt="Screenshot of C++ source code in an editor">
+                            <div class="card-body">
+                                <p class="card-text small text-muted mb-0">C++ source code in VS Code</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- This is the same float gallery I built a couple assignments ago, I just left it in since it still shows I know how float works, separate from everything Bootstrap is doing. -->
+
+                <h3 class="fs-5 fw-semibold mt-3">Quick Preview Strip</h3>
+                <div class="float-gallery">
+                    <img src="portfolio_screenshot.png" alt="Preview thumbnail of the portfolio homepage" class="float-img">
+                    <img src="skills_section.png" alt="Preview thumbnail of the skills section" class="float-img">
+                    <img src="phone_screenshot.png" alt="Preview thumbnail of the mobile view" class="float-img">
+                </div>
+
+            </section>
+
+            <!-- Education and Experience. I don't type these tables out in the HTML anymore. app.js builds both of them with JavaScript (createElement and appendChild) and drops them into the two empty divs below. The Bootstrap table classes get added by the script too, so they still look the same as before. -->
+
+            <section id="education" class="mb-5">
+
+                <h2 class="font-header">Education and Experience</h2>
+
+                <h3 class="fs-5 fw-semibold mt-3">Education</h3>
+                <div class="table-responsive" id="education-table-container"></div>
+
+                <h3 class="fs-5 fw-semibold mt-4">Experience</h3>
+                <div class="table-responsive" id="experience-table-container"></div>
+
+                <p class="text-muted small mt-3">
+                    I am continuously working to improve my Cybersecurity skills.
+                </p>
+
+            </section>
+
+            <section class="mb-5">
+
+                <h2 class="font-header">My Learning Journey</h2>
+
+                <p>
+                    My experience with coding went from
+                    <del>"I have no idea what I'm doing."</del>
+                    to <ins>"I'm starting to understand and feel more confident."</ins>
+                </p>
+
+                <p>
+                    My goal is to continue improving my skills by
+                    <mark>practicing consistently</mark>.
+                </p>
+
+                <p>
+                    I am currently working toward becoming a better
+                    <strong>webpage developer</strong> and technology professional.
+                </p>
+
+            </section>
+
+        </main>
+
+    </div>
+</div>
+
+<!-- This is my footer. Same deal as the header, fixed-bottom pins it to the bottom of the screen, and bg-gradient on bg-dark gives it that same subtle gradient look. I used container-fluid and row here too so it stays structured the Bootstrap way. -->
+
+<footer id="contact" class="site-footer bg-dark bg-gradient text-white fixed-bottom py-2">
+    <div class="container-fluid">
+        <div class="row align-items-center gy-1">
+            <div class="col-12 col-lg-auto">
+                <ul class="list-inline mb-0 small">
+                    <li class="list-inline-item"><a class="link-light text-decoration-none" href="mailto:csb434@nau.edu">csb434@nau.edu</a></li>
+                    <li class="list-inline-item">&middot;</li>
+                    <li class="list-inline-item"><a class="link-light text-decoration-none" href="tel:+7738899976">(773) 889-9976</a></li>
+                    <li class="list-inline-item">&middot;</li>
+                    <li class="list-inline-item"><a class="link-light text-decoration-none" href="https://github.com/csb434" target="_blank" rel="noopener">github.com/csb434</a></li>
+                    <li class="list-inline-item">&middot;</li>
+                    <li class="list-inline-item"><a class="link-light text-decoration-none" href="https://www.linkedin.com/in/christian-b-598aa3433" target="_blank" rel="noopener">linkedin.com/in/christian-braun</a></li>
+                    <li class="list-inline-item">&middot;</li>
+                    <li class="list-inline-item">Flagstaff, Arizona</li>
+                </ul>
+            </div>
+            <div class="col-12 col-lg-auto ms-lg-auto">
+                <small class="text-white-50">2026 Christian Braun. Personal Portfolio.</small>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap's JS bundle, this is what powers any of its interactive components if I end up using something like the collapsible navbar toggler or a modal down the road. -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- This is my own JavaScript file for this assignment. I put it last, right before the closing body tag, so the HTML elements it's grabbing (like the greeting paragraph and the resume button) already exist on the page by the time this script runs. -->
+<script src="app.js"></script>
+
+</body>
+</html>
